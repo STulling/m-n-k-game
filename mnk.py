@@ -25,11 +25,15 @@ def bestMove(player):
     if (player == X):
         #for each possible option
 		#	maximize getGridValue for that option for player X
+		#	if multiple options have the same getGridValue
+		#		select option with minimal getGridValue for player O
 		#do that move
 		#check whether game is over
     else:  
         #for each possible option
 		#	minimize getGridValue for that option for player X
+		#	if multiple options have the same getGridValue
+		#		select option with maximal getGridValue for player O
 		#do that move
 
 # How to calculate grid value: idk
