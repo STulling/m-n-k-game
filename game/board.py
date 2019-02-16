@@ -1,4 +1,5 @@
 from game.cell import Cell
+from game.direction import Direction
 from game.position import Position
 
 
@@ -40,6 +41,29 @@ class Board:
 
     def center(self):
         return Position(int(self.width/2), int(self.height/2))
+
+    def expand(self, dir):
+        if dir is Direction.LEFT:
+            for row in self.grid:
+                for cell in row:
+                    cell.move_cell(self.width, 0)
+            self.grid = [[Cell(x, y, self, self.game) for x in range(self.width)] for y in
+                                     range(self.height)] + self.grid
+            return
+        if dir is Direction.RIGHT:
+            self.grid = self.grid + [[Cell(x, self.height + y, self, self.game) for x in range(self.width)] for y in range(self.height)]
+            return
+        if dir is Direction.UP:
+            for row in self.grid:
+                for cell in row:
+                    cell.move_cell(0, self.height)
+            for y in range(self.height):
+                self.grid[y] = [Cell(x, y, self, self.game) for x in range(self.width)] + self.grid[y]
+            return
+        if dir is Direction.DOWN:
+            for y in range(self.height):
+                self.grid[y] = self.grid[y] + [Cell(self.width + x, y, self, self.game) for x in range(self.width)]
+            return
 
     def __str__(self):
         string = ""

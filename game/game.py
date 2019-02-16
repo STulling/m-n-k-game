@@ -47,6 +47,8 @@ class AdjGame(Game):
         pos = self.board.center()
         self.board.make_move(pos.x, pos.y, self.players[self.current_player])
         self.next_player()
+        self.board.expand(Direction.LEFT)
+        print(self.board.grid[2][2].pos)
 
     def valid_move(self, row, column):
         if self.board.grid[column][row].occupied != Occupation.FILLED:
