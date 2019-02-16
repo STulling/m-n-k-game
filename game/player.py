@@ -4,10 +4,15 @@ class Player:
 
     name = None
     symbol = None
+    game = None
 
-    def __init__(self, name, symbol):
+    def __init__(self, name, symbol, game):
         self.name = name
         self.symbol = symbol
+        self.game = game
+
+    def make_move(self, row, col):
+        return self.game.make_move(row, col)
 
     def __str__(self):
         return self.name
