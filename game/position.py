@@ -20,3 +20,6 @@ class Position:
             Direction.DOWN_LEFT: Position(self.x-1, self.y+1),
             Direction.DOWN_RIGHT: Position(self.x+1, self.y+1)
         }[direction]
+
+    def __str__(self):
+        return "<" + str(self.x) + ", " + str(self.y) + ">"
