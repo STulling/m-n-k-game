@@ -65,7 +65,10 @@ class AIGame(Game):
         self.players = [Player("Player 1", "X", self), Computer("Computer 2", "T", self)]
 
     def make_move(self, row, column):
-        return self.game.make_move(row, column)
+        if self.game.make_move(row, column):
+            self.next_player()
+            return True
+        return False
 
     def __str__(self):
         return str(self.game)

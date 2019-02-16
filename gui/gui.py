@@ -40,8 +40,8 @@ class Application(tk.Frame):
                                command=partial(self.make_move, c.x, c.y)).grid(row=c.x+1, column=c.y)
 
     def make_move(self, row, column):
-        print(row, column)
         player = self.game.players[self.game.current_player]
+        print(player)
         if type(player) == Player and player.make_move(row, column):
             self.grid[column][row] = tk.Button(self,
                                    width=10,
