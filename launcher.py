@@ -1,4 +1,5 @@
 from game.game import Game
+from game.union_find import UnionFind
 from gui.gui import Application
 import tkinter as tk
 

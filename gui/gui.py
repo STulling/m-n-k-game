@@ -43,3 +43,5 @@ class Application(tk.Frame):
 
     def debug(self):
         print(self.game.board)
+        for i in range(10):
+            print(self.game.board.grid[0][i].adjacency)

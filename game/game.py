@@ -8,7 +8,7 @@ class Game:
     board = None
 
     current_player = None
-    win_length = 3
+    win_length = 10
 
     def __init__(self):
         self.players = [Player("Player 1", "X"), Player("Player 2", "T")]
