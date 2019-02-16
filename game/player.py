@@ -19,3 +19,9 @@ class Player:
 
     def __repr__(self):
         return str(self)
+
+
+class Computer(Player):
+
+    def __init__(self, name, symbol, game):
+        super().__init__(name, symbol, game)

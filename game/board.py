@@ -1,8 +1,6 @@
 from game.cell import Cell
 from game.position import Position
 
-DEF_BOARD_SIZE = 10
-
 
 class Board:
     """
@@ -19,7 +17,7 @@ class Board:
     height = None
     grid = None
 
-    def __init__(self, game=None, width=DEF_BOARD_SIZE, height=DEF_BOARD_SIZE):
+    def __init__(self, width, height, game=None):
         """
         Initialize the board with empty cells, based upon the specified size.
 
@@ -35,7 +33,10 @@ class Board:
         self.grid[column][row].activate(player)
 
     def get_cell(self, pos):
-        return self.grid[pos.y][pos.x]
+        try:
+            return self.grid[pos.y][pos.x]
+        except IndexError:
+            return Cell(-1, -1, self, self.game)
 
     def center(self):
         return Position(int(self.width/2), int(self.height/2))
