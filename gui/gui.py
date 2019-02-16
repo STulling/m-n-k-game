@@ -1,6 +1,8 @@
 import tkinter as tk
 from functools import partial
 
+from game.player import Player
+
 
 class Application(tk.Frame):
 
@@ -39,7 +41,7 @@ class Application(tk.Frame):
 
     def make_move(self, row, column):
         player = self.game.players[self.game.current_player]
-        if player.make_move(row, column):
+        if type(player) == Player and player.make_move(row, column):
             self.grid[column][row] = tk.Button(self,
                                    width=10,
                                    height=5,
