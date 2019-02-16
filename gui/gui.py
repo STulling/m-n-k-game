@@ -1,7 +1,7 @@
 import tkinter as tk
 from functools import partial
 
-from game.player import Player
+from game.player import Player, Computer
 
 
 class Application(tk.Frame):
@@ -50,6 +50,21 @@ class Application(tk.Frame):
                                    borderwidth=1,
                                    command=lambda: self.make_move(row, column)).grid(row=row+1, column=column)
             self.title = tk.Label(self, text=str(player)).grid(row=0)
+        self.computer_move()
+
+    def computer_move(self):
+        player = self.game.players[self.game.current_player]
+        if type(player) == Computer:
+            pos = player.compute_move()
+            self.grid[pos.y][pos.x] = tk.Button(self,
+                                               width=10,
+                                               height=5,
+                                               text=player.symbol,
+                                               borderwidth=1,
+                                               command=lambda: self.make_move(pos.x, pos.y)).grid(row=pos.x + 1,
+                                                                                                 column=pos.y)
+            self.title = tk.Label(self, text=str(player)).grid(row=0)
+            self.computer_move()
 
     def debug(self):
         print(self.game.board)

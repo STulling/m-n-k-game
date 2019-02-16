@@ -1,3 +1,5 @@
+from game.position import Position
+from solver.minimax import Minimax
 
 
 class Player:
@@ -23,5 +25,15 @@ class Player:
 
 class Computer(Player):
 
-    def __init__(self, name, symbol, game):
+    algorithm = None
+
+    def __init__(self, name, symbol, game, algorithm=Minimax()):
         super().__init__(name, symbol, game)
+        self.algorithm = algorithm
+
+    def compute_move(self):
+        pos = self.algorithm.exec(self.game.board)
+        if self.game.make_move(pos.x, pos.y):
+            return pos
+        return Position(-1,-1)
+

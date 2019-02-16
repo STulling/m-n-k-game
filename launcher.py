@@ -8,7 +8,7 @@ WIN_LENGTH = 3
 
 def main():
     root = tk.Tk()
-    app = Application(master=root, game=AIGame(AdjGame(m=BOARD_SIZE, n=BOARD_SIZE, k=3)))
+    app = Application(master=root, game=AIGame(Game(m=BOARD_SIZE, n=BOARD_SIZE, k=3)))
     app.mainloop()
 
 
