@@ -12,6 +12,11 @@ class Direction(Enum):
     DOWN_RIGHT = 7
 
     @staticmethod
+    def dir_list():
+        return [Direction.LEFT, Direction.RIGHT, Direction.UP, Direction.DOWN,
+                Direction.UP_LEFT, Direction.UP_RIGHT, Direction.DOWN_LEFT, Direction.DOWN_RIGHT]
+
+    @staticmethod
     def opp_dir(direction):
         return {
             Direction.LEFT: Direction.RIGHT,

@@ -16,7 +16,7 @@ class Application(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.title = tk.Label(self, text="Player 1").grid(row=0)
+        self.title = tk.Label(self, text=self.game.players[self.game.current_player].name).grid(row=0)
         self.print = tk.Button(self, text="Debug", command=self.debug).grid(row=0, column=9)
         self.create_grid()
 
@@ -27,8 +27,15 @@ class Application(tk.Frame):
                                text="0",
                                borderwidth=1,
                                command=partial(self.make_move, r, c)).grid(row=r+1, column=c)
-                     for r in range(10)]
-                     for c in range(10)]
+                     for r in range(self.game.board.height)]
+                     for c in range(self.game.board.width)]
+        c = self.game.board.center()
+        self.grid[c.y][c.x] = tk.Button(self,
+                               width=10,
+                               height=5,
+                               text="X",
+                               borderwidth=1,
+                               command=partial(self.make_move, c.x, c.y)).grid(row=c.x+1, column=c.y)
 
     def make_move(self, row, column):
         player = self.game.players[self.game.current_player]

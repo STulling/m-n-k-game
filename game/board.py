@@ -1,6 +1,7 @@
 from game.cell import Cell
+from game.position import Position
 
-DEF_BOARD_SIZE = 20
+DEF_BOARD_SIZE = 10
 
 
 class Board:
@@ -35,6 +36,9 @@ class Board:
 
     def get_cell(self, pos):
         return self.grid[pos.y][pos.x]
+
+    def center(self):
+        return Position(int(self.width/2), int(self.height/2))
 
     def __str__(self):
         string = ""

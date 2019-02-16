@@ -1,6 +1,8 @@
+from game.direction import Direction
 from game.occupation import Occupation
 from game.player import Player
 from game.board import Board
+from game.position import Position
 
 
 class Game:
@@ -30,3 +32,18 @@ class Game:
 
     def win(self):
         print("WIN")
+
+
+class AdjGame(Game):
+
+    def __init__(self):
+        super().__init__()
+        pos = self.board.center()
+        self.board.make_move(pos.x, pos.y, self.players[self.current_player])
+        self.next_player()
+
+    def valid_move(self, row, column):
+        for direction in Direction.dir_list():
+            if self.board.get_cell(Position(row, column).to_dir(direction)).occupied == Occupation.FILLED:
+                return True
+        return False
