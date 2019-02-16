@@ -26,7 +26,6 @@ class Application(tk.Frame):
         self.grid = [[tk.Button(self,
                                 width=10,
                                 height=5,
-                                text="0",
                                 borderwidth=1,
                                 command=partial(self.make_move, r, c)).grid(row=r + 1, column=c)
                       for r in range(self.game.board.height)]
