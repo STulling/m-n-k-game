@@ -10,3 +10,7 @@ class Minimax:
 
     def exec(self, board):
         return Position(0, 0)
+
+    def get_grid_value(self):
+        # TODO
+        return 0

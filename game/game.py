@@ -49,9 +49,10 @@ class AdjGame(Game):
         self.next_player()
 
     def valid_move(self, row, column):
-        for direction in Direction.dir_list():
-            if self.board.get_cell(Position(row, column).to_dir(direction)).occupied == Occupation.FILLED:
-                return True
+        if self.board.grid[column][row].occupied != Occupation.FILLED:
+            for direction in Direction.dir_list():
+                if self.board.get_cell(Position(row, column).to_dir(direction)).occupied == Occupation.FILLED:
+                    return True
         return False
 
 
