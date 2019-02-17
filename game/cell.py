@@ -63,6 +63,10 @@ class Cell:
             self.game.win()
         return self.adjacency[self.game.current_player][Direction.main_dir(direction)]
 
+    def move_cell(self, dx, dy):
+        self.pos.x += dx
+        self.pos.y += dy
+
     def __str__(self):
         if self.player is None:
             return "0"
